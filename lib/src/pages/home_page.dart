@@ -10,13 +10,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'CouterA',
             ),
             Text(
-              '$_counter',
+              '',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
@@ -43,14 +36,14 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
+            onPressed: (){},
+            tooltip: 'Add',
             child: const Icon(Icons.add),
           ),
           const SizedBox(height: 20),
           FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'reset',
+            onPressed: (){},
+            tooltip: 'Reset',
             child: const Icon(Icons.remove),
           ),
         ],
