@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_learn/src/app_route.dart';
 import 'package:flutter_bloc_learn/src/bloc/counter_a_bloc/counter_a_bloc.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -18,6 +19,12 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.pushNamed(context, AppRoute.another),
+            icon: const Icon(Icons.navigate_next),
+          ),
+        ],
       ),
       body: Center(
         child: Column(
@@ -30,7 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
             BlocBuilder<CounterABloc, CounterAState>(
               builder: (context, state) {
                 return Text(
-                  '${state.count}',style: const TextStyle(fontSize: 30),
+                  '${state.count}',
+                  style: const TextStyle(fontSize: 30),
                 );
               },
             ),
@@ -41,15 +49,17 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: () => context.read<CounterABloc>().add(CounterAEventAdd()),
+            onPressed: () =>
+                context.read<CounterABloc>().add(CounterAEventAdd()),
             tooltip: 'Add',
             child: const Icon(Icons.add),
           ),
           const SizedBox(height: 20),
           FloatingActionButton(
-            onPressed: () => context.read<CounterABloc>().add(CounterAEventReset()),
+            onPressed: () =>
+                context.read<CounterABloc>().add(CounterAEventReset()),
             tooltip: 'Reset',
-            child: const Icon(Icons.remove),
+            child: const Icon(Icons.restore),
           ),
         ],
       ),
